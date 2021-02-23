@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Phonebook.Entities.Contact>
+
+@{
+    ViewData["Title"] = "AllContacts";
+}
+
+<h1>Contacts</h1>
+<p></p>
+
+<table class="table" bgcolor="#e3d3eb">
+    <thead>
+        <tr bgcolor="#ac7cc2">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emails)
+                    </td>*@
+
+                <td>
+                    <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

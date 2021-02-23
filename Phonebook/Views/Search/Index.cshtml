@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+<h3>Search</h3>
+<hr />
+<form class="col-md-5" asp-controller="Contacts" asp-action="Search">
+    <p>
+        Enter name: <input type="text" name="SearchString" />
+        <input class="btn btn-outline-warning" asp-action="Search" type="submit" value="Search" />
+    </p>
+</form>
