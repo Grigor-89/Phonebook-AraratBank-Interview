@@ -31,14 +31,6 @@ namespace Phonebook.Controllers
                 return NotFound();
             }
             return RedirectToAction(nameof(SearchController.Details), nameof(SearchController).Replace(nameof(Controller), ""), new { id});
-            var contact = await _context.Contacts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            return View(contact);
         }
 
 
