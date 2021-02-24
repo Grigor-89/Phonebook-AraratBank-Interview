@@ -20,7 +20,7 @@ namespace Phonebook.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("AllContacts", "MyContact");
+            return View();
         }
 
         public IActionResult Privacy()

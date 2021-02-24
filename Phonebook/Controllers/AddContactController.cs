@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,33 +15,28 @@ namespace Phonebook.Controllers
         {
             _context = context;
         }
-        //GET: Add Contact
         public async Task<IActionResult> Create()
         {
-            var contact = await _context.Emails.ToListAsync();
+            var contact = await _context.Contacts.ToListAsync();
             ViewData["Create"] = contact;
             return View();
         }
 
-        //POST: Add Contact
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Phone,Emails")] Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Phone,Email")] Contact contact)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(contact);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Create));
-
+                return RedirectToAction("AllContacts", "MyContact");
             }
-            return View(contact);
+            return View(contact);           
         }
         public IActionResult Index()
         {
             return View();
         }
-
     }
 }

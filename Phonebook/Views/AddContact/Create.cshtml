@@ -4,10 +4,10 @@
     ViewData["Title"] = "Create";
 }
 
-<h3>Creat new contact</h3>
+<h3 style="background-color: #007bff">Creat new contact</h3>
 
 <hr />
-<div class="row" style="background-color: #e3d3eb; color: red;">
+<div class="row" style="background-color: #d5f5f3; color: #007bff;">
   <div class="col-md-4">
       <form asp-action="Create">
           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -27,14 +27,13 @@
               <span asp-validation-for="Phone" class="text-danger"></span>
           </div>
           <div class="form-group">
-              <label asp-for="Emails" class="control-label"></label>
-              <input asp-for="Emails" class="form-control" />
-              <span asp-validation-for="Emails" class="text-danger"></span>
-          </div>
-         
-          <td>
+              <label asp-for="Email" class="control-label"></label>
+              <input asp-for="Email" class="form-control" />
+              <span asp-validation-for="Email" class="text-danger"></span>
+          </div>       
+          <div>
               <input class="btn btn-outline-warning" asp-action="Create" type="submit" value="Create" />
-          </td>
+          </div>
       </form>
 
   </div>

@@ -4,13 +4,13 @@
     ViewData["Title"] = "AllContacts";
 }
 
-<h3>All Contacts</h3>
+<h3 style="background-color: #007bff">All Contacts</h3>
 
 <hr />
 
-<table class="table" bgcolor="#e3d3eb">
+<table class="table" bgcolor="#d5f5f3">
     <thead>
-        <tr bgcolor="#ac7cc2">
+        <tr bgcolor="#007bff">
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -31,14 +31,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Emails)
-                    </td>*@
-
+                </td>                
                 <td>
                     <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
 

@@ -10,9 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Phonebook.Entities;
-using Phonebook.Interfaces;
-using Phonebook.Repository;
-
 namespace Phonebook
 {
     public class Startup
@@ -29,7 +26,6 @@ namespace Phonebook
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ContactContext>(option => option.UseSqlServer(connection));
-            services.AddTransient<IContactRepository, ContactRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

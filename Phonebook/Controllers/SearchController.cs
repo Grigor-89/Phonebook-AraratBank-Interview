@@ -37,11 +37,15 @@ namespace Phonebook.Controllers
                 contacts = contacts.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(await contacts.ToListAsync());
+            var con = await contacts.ToListAsync();
+
+            return View(con);
+
         }
 
         public async Task<IActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -55,22 +59,19 @@ namespace Phonebook.Controllers
                 return NotFound();
             }
 
-            return View(contact);
+            return RedirectToAction("Details", "MyContact", contact);
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var contact = await _context
-                .Contacts
-                .Include(c => c.Emails)
-                .FirstOrDefaultAsync(c => c.Id == id);
+            var contact = await _context.Contacts.FindAsync(id);
 
             if (contact == null)
             {
                 return NotFound();
             }
 
-            return View(contact);
+            return RedirectToAction("Edit", "MyContact", contact);
         }
 
         [HttpPost]
@@ -89,7 +90,7 @@ namespace Phonebook.Controllers
                 return RedirectToAction(nameof(AllContacts));
             }
 
-            return View(contact);
+            return RedirectToAction("Edit", "MyContact", contact);
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -107,7 +108,7 @@ namespace Phonebook.Controllers
                 return NotFound();
             }
 
-            return View(contact);
+            return RedirectToAction("Delete", "MyContact", contact);
         }
 
         [HttpPost, ActionName("Delete")]

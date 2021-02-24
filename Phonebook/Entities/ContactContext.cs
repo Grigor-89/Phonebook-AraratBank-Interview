@@ -9,7 +9,6 @@ namespace Phonebook.Entities
     public class ContactContext : DbContext
     {
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Email> Emails { get; set; }
 
         public ContactContext(DbContextOptions<ContactContext> options) : base(options)
         {

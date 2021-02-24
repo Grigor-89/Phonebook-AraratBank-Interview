@@ -17,7 +17,6 @@ namespace Phonebook.Controllers
             _context = context;
         }
 
-
         public async Task<IActionResult> AllContacts()
         {
             return View(await _context.Contacts.ToListAsync());
@@ -30,7 +29,7 @@ namespace Phonebook.Controllers
             {
                 return NotFound();
             }
-            return RedirectToAction(nameof(SearchController.Details), nameof(SearchController).Replace(nameof(Controller), ""), new { id});
+            //return RedirectToAction(nameof(SearchController.Details), nameof(SearchController).Replace(nameof(Controller), ""), new { id});
             var contact = await _context.Contacts
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (contact == null)
@@ -54,7 +53,7 @@ namespace Phonebook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Phone,Emails")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Phone,Email")] Contact contact)
         {
             if (id != contact.Id)
             {
